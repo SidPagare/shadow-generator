@@ -1,0 +1,74 @@
+<nav class="navbar navbar-expand-lg">
+  <div class="container">
+    <a class="navbar-brand" href="#">S</a>
+    <button class="navbar-toggler navbar-light bg-light" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link active" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">About</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- main-container -->
+<div class="wrapper">
+  <div class="main container">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="content">
+          <p>Horizontal Length</p>
+          <input type="range" min="1" max="100" [(ngModel)]="horizontalLen" class="slider" id="myRange" [ngClass]="{'width.px':100 }"> {{horizontalLen}}px
+        </div>
+        <div class="content">
+          <p>Vertical Length</p>
+          <input type="range" min="1" max="100" [(ngModel)]="verticalLen" class="slider" id="myRange" [ngClass]="{'width.px':100 }"> {{verticalLen}}px
+        </div>
+        <hr>
+        <div class="content">
+          <p>Blur Radius</p>
+          <input type="range" min="1" max="100" [(ngModel)]="blur" class="slider" id="myRange" [ngClass]="{'width.px':100 }"> {{blur}}px
+        </div>
+        <div class="content">
+            <p>Spread Radius</p>
+            <input type="range" min="1" max="100" [(ngModel)]="spread" class="slider" id="myRange" [ngClass]="{'width.px':100 }"> {{spread}}px
+          </div>
+        <hr>
+        <div class="content color-selector">
+            <p>Background Color</p>
+            <div class="color">
+            <input id="name" type="color" name="color" [(ngModel)]="backColor" (change)="onBackColorChange(backColor,100)">
+            <p class="text"> {{backToDisplay}}</p>
+            </div>
+        </div>
+        <div class="content color-selector">
+            <p>Shadow Color</p>
+            <div class="color">
+            <input id="name" type="color" name="shadowColor" [(ngModel)]="shadowColor" (change)="onShadowColorChange(shadowColor,100)">
+            <p class="text"> {{shadowColor}}</p>
+            </div>
+          </div>
+      </div>
+      <div class="col-md-6">
+        <div class="box-wrapper">
+          <div class="box" [ngStyle]="{'background-color': backColor,'box-shadow' : getShadow()}">
+
+          </div>
+          <div class="styles">
+            <p>-webkit-box-shadow: {{horizontalLen}}px {{verticalLen}}px {{blur}}px {{spread}}px {{result}};</p>
+            <p>-moz-box-shadow: {{horizontalLen}}px {{verticalLen}}px {{blur}}px {{spread}}px {{result}};</p>
+            <p>box-shadow: {{horizontalLen}}px {{verticalLen}}px {{blur}}px {{spread}}px {{result}};</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
